@@ -1,0 +1,5 @@
+step1: installed ansible
+step2: created a project folder ansible-project
+step3: In the project folder created playbook.yml,inventory.txt
+step4: created ssh keys using ssh-keygen with root user 
+step5: copied ~/.ssh/id_rsa_pub in ~/.ssh/authorized keys file.

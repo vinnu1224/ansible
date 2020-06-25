@@ -1,0 +1,22 @@
+---
+- name: Setup LAMP STACK on AmazonLinux
+  hosts: localhost
+  vars: 
+    ansible_python_interpreter: '/usr/bin/python'
+  become: yes
+  tasks:
+    - name: setup lamp stack
+      yum: name='{{ item }}' state=present
+      with_items:
+        - httpd24
+        - php72
+        - mysql57-server
+        - php72-mysqlnd
+    - name: start services
+      service: name='{{ item }}' state=started
+      with_items:
+        - httpd
+        - mysqld
+    - name: deploy html file
+      copy: src=/root/ansible-project/index.html dest=/var/www/html/index.html
+
